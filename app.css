@@ -1,0 +1,177 @@
+@font-face {
+  font-family: 'Cronos Pro';
+  src: url('/fonts/Cronos-Pro_12459.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Cronos Pro';
+  src: url('/fonts/Cronos-Pro-Light_12448.ttf') format('truetype');
+  font-weight: 200;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    background-color: #000;
+    background-image: url('/img/background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.backgroundImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.UIOverlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.25);
+
+    opacity: 0;
+    transition: ease 500ms opacity;
+    pointer-events: none;
+}
+
+.UIOverlay.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.UIPrompt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 385px;
+    height: 170px;
+    padding: 15px 20px;
+    font-family: 'Cronos Pro';
+    font-weight: 200;
+    font-size: 17px;
+    background-color: rgba(50, 0, 200, .4);
+
+    opacity: 0;
+    transition-delay: 100ms;
+    transition-property: opacity;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+    pointer-events: none;
+}
+
+.UIPrompt.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.UIPrompt__text {
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.UIPrompt__input {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.UIPrompt__input input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 1px;
+    background-color: rgba(0,0,0,.1);
+    font-family: 'Cronos Pro';
+    font-size: 17px;
+    font-weight: 200;
+    color: #fff;
+}
+
+
+.UIButton {
+    padding: 0 8px 4px;
+    border: 1px solid #000;
+    background-color: #eeffff;
+    margin-right: 7px;
+}
+
+.UIButton.m--disabled {
+    background-color: gray;
+}
+
+.UIButton.m--active {
+    background-color: yellow;
+}
+
+.inventoryContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+    transform-origin: 0 0;
+}
+
+.inventory {
+    display: inline-block;
+    transform: translate(315px, 197px);
+    /*top: 197px;
+    left: 315px;*/
+    font-size: 0;
+}
+
+.inventory__inner {
+}
+
+.inventory__cell {
+    display: inline-block;
+    width: 52px;
+    height: 52px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border: 1px solid transparent;
+}
+
+.inventory__cell:last-child {
+    margin-right: 0;
+}
+
+.inventory__row:last-child .inventory__cell {
+    margin-bottom: 0;
+}
+
+
+.legendary {
+    width: 52px;
+    height: 52px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: default;
+}
+
+.legendary.m--the_juggernaut {
+    background-image: url('/img/The_Juggernaut.png');
+}
+
+.legendary.m--the_juggernaut-2 {
+    background-color: pink;
+}
