@@ -26,7 +26,7 @@ body {
 
     margin: 0;
     background-color: #000;
-    background-image: url('/img/gw520.jpg');
+    background-image: url('img/gw520.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -67,9 +67,9 @@ body {
     font-family: 'Cronos Pro';
     font-weight: 200;
     font-size: 15px;
-    background: url('/img/255290.png') left top -17px repeat-x,
-                url('/img/255291.png') left bottom -16px repeat-x,
-                url('/img/156003.png') -29px -23px no-repeat;
+    background: url('img/255290.png') left top -17px repeat-x,
+                url('img/255291.png') left bottom -16px repeat-x,
+                url('img/156003.png') -29px -23px no-repeat;
     border: 2px solid #000;
 
     opacity: 0;
@@ -97,8 +97,8 @@ body {
     display: flex;
     margin-bottom: 10px;
 
-    background: url('/img/255292.png') left top -5px no-repeat,
-                url('/img/255293.png') left bottom -14px no-repeat;
+    background: url('img/255292.png') left top -5px no-repeat,
+                url('img/255293.png') left bottom -14px no-repeat;
 }
 
 .UIPrompt__input:before,
@@ -206,85 +206,85 @@ body {
 }
 
 .legendary.m--frenzy {
-    background-image: url('/img/Frenzy_(weapon).png');
+    background-image: url('img/Frenzy_(weapon).png');
 }
 
 .legendary.m--meteorlogicus {
-    background-image: url('/img/Meteorlogicus.png');
+    background-image: url('img/Meteorlogicus.png');
 }
 
 .legendary.m--the_juggernaut {
-    background-image: url('/img/The_Juggernaut.png');
+    background-image: url('img/The_Juggernaut.png');
 }
 
 .legendary.m--frostfang {
-    background-image: url('/img/Frostfang.png');
+    background-image: url('img/Frostfang.png');
 }
 
 .legendary.m--quip {
-    background-image: url('/img/Quip.png');
+    background-image: url('img/Quip.png');
 }
 
 .legendary.m--the_minstrel {
-    background-image: url('/img/The_Minstrel.png');
+    background-image: url('img/The_Minstrel.png');
 }
 
 .legendary.m--howler {
-    background-image: url('/img/Howler.png');
+    background-image: url('img/Howler.png');
 }
 
 .legendary.m--rodgort {
-    background-image: url('/img/Rodgort.png');
+    background-image: url('img/Rodgort.png');
 }
 
 .legendary.m--the_moot {
-    background-image: url('/img/The_Moot.png');
+    background-image: url('img/The_Moot.png');
 }
 
 .legendary.m--incinerator {
-    background-image: url('/img/Incinerator.png');
+    background-image: url('img/Incinerator.png');
 }
 
 .legendary.m--sunrise {
-    background-image: url('/img/Sunrise.png');
+    background-image: url('img/Sunrise.png');
 }
 
 .legendary.m--the_predator {
-    background-image: url('/img/The_Predator.png');
+    background-image: url('img/The_Predator.png');
 }
 
 .legendary.m--kamohoalii_kotaki {
-    background-image: url('/img/Kamohoali\'i_Kotaki.png');
+    background-image: url('img/Kamohoali\'i_Kotaki.png');
 }
 
 .legendary.m--the_bifrost {
-    background-image: url('/img/The_Bifrost.png');
+    background-image: url('img/The_Bifrost.png');
 }
 
 .legendary.m--twilight {
-    background-image: url('/img/Twilight.png');
+    background-image: url('img/Twilight.png');
 }
 
 .legendary.m--bolt {
-    background-image: url('/img/Bolt.png');
+    background-image: url('img/Bolt.png');
 }
 
 .legendary.m--kraitkin {
-    background-image: url('/img/Kraitkin.png');
+    background-image: url('img/Kraitkin.png');
 }
 
 .legendary.m--the_dreamer {
-    background-image: url('/img/The_Dreamer.png');
+    background-image: url('img/The_Dreamer.png');
 }
 
 .legendary.m--eternity {
-    background-image: url('/img/Eternity.png');
+    background-image: url('img/Eternity.png');
 }
 
 .legendary.m--kudzu {
-    background-image: url('/img/Kudzu.png');
+    background-image: url('img/Kudzu.png');
 }
 
 .legendary.m--the_flameseeker_prophecies {
-    background-image: url('/img/The_Flameseeker_Prophecies.png');
+    background-image: url('img/The_Flameseeker_Prophecies.png');
 }
