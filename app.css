@@ -1,12 +1,12 @@
 @font-face {
   font-family: 'Cronos Pro';
-  src: url('/fonts/Cronos-Pro_12459.ttf') format('truetype');
+  src: url('fonts/Cronos-Pro_12459.ttf') format('truetype');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Cronos Pro';
-  src: url('/fonts/Cronos-Pro-Light_12448.ttf') format('truetype');
+  src: url('fonts/Cronos-Pro-Light_12448.ttf') format('truetype');
   font-weight: 200;
 }
 
