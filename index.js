@@ -80,6 +80,10 @@
     }
   }, false);
 
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
   document.addEventListener('mousedown', function(e) {
     if (e.target.classList.contains(className)) {
       isDragging = true;
