@@ -85,6 +85,10 @@ body {
     pointer-events: auto;
 }
 
+.UIPrompt__body {
+    margin-bottom: 12px;
+}
+
 .UIPrompt__text {
     margin-bottom: 9px;
     padding-left: 10px;
@@ -95,7 +99,6 @@ body {
 .UIPrompt__input {
     position: relative;
     display: flex;
-    margin-bottom: 10px;
 
     background: url('img/255292.png') left top -5px no-repeat,
                 url('img/255293.png') left bottom -14px no-repeat;
@@ -106,7 +109,7 @@ body {
     content: "";
     position: absolute;
     width: 1px;
-    height: 22px;
+    height: 25px;
     background-color: #000;
 }
 
@@ -116,12 +119,12 @@ body {
 }
 
 .UIPrompt__input:after {
-    right: 1px;
+    right: 0;
 }
 
 .UIPrompt__input input {
     flex: 1;
-    height: 23px;
+    height: 26px;
     padding: 3px 7px;
     border: none;
     border-radius: 3px;
@@ -133,6 +136,10 @@ body {
     outline: none;
 }
 
+.UIPrompt__actionContainer {
+    padding-right: 5px;
+    padding-left: 5px;
+}
 
 .UIButton {
     min-width: 54px;
