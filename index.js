@@ -18,6 +18,7 @@
   var className = 'js-handle';
   var item = null;
   var scaleRatio = 1;
+  var cellSize = 57;
 
   window.addEventListener('resize', onWindowResize, false);
   onWindowResize();
@@ -108,8 +109,8 @@
     if (event.pageX >= inventoryRect.left && event.pageX <= inventoryRect.right &&
         event.pageY >= inventoryRect.top && event.pageY <= inventoryRect.bottom) {
 
-      let y = Math.floor((event.pageX - inventoryRect.left) / (52 * scaleRatio)) + 1;
-      let x = Math.floor((event.pageY - inventoryRect.top) / (52 * scaleRatio)) + 1;
+      let y = Math.floor((event.pageX - inventoryRect.left) / (cellSize * scaleRatio)) + 1;
+      let x = Math.floor((event.pageY - inventoryRect.top) / (cellSize * scaleRatio)) + 1;
 
       console.log(x, y);
 
@@ -120,9 +121,8 @@
       }
 
       if (cell.firstChild) {
-        let _y = Math.floor((dragStart.x - inventoryRect.left) / (52 * scaleRatio)) + 1;
-        let _x = Math.floor((dragStart.y - inventoryRect.top) / (52 * scaleRatio)) + 1;
-        console.log(_x, _y);
+        let _y = Math.floor((dragStart.x - inventoryRect.left) / (cellSize * scaleRatio)) + 1;
+        let _x = Math.floor((dragStart.y - inventoryRect.top) / (cellSize * scaleRatio)) + 1;
         document.getElementById(`${_x}-${_y}`).appendChild(cell.firstChild);
       }
 
@@ -133,8 +133,8 @@
     } else {
       openUIPrompt();
 
-      let y = Math.floor((dragStart.x - inventoryRect.left) / (52 * scaleRatio)) + 1;
-      let x = Math.floor((dragStart.y - inventoryRect.top) / (52 * scaleRatio)) + 1;
+      let y = Math.floor((dragStart.x - inventoryRect.left) / (cellSize * scaleRatio)) + 1;
+      let x = Math.floor((dragStart.y - inventoryRect.top) / (cellSize * scaleRatio)) + 1;
       document.getElementById(`${x}-${y}`).appendChild(item);
 
       item.style.position = 'static';
