@@ -9,6 +9,10 @@
   var inventory = document.getElementById('inventory');
   var inventoryRect = null;
 
+  var negativeButton = document.getElementById('UIPrompt-button-n');
+  var positiveButton = document.getElementById('UIPrompt-button-y');
+  var inputField = document.getElementById('UIPrompt-input');
+
   var dragStart = { x: 0, y: 0 };
   var isDragging = false;
   var className = 'js-handle';
@@ -42,6 +46,38 @@
     item.style.left = `${(event.pageX - inventoryRect.left) / scaleRatio}px`;
     item.style.transform = `translate(-${25}px, -${25}px)`;
   }
+
+  function openUIPrompt() {
+    UIOverlay.classList.add('is-visible');
+    UIPrompt.classList.add('is-visible');
+  }
+
+  function closeUIPrompt() {
+    UIOverlay.classList.remove('is-visible');
+    UIPrompt.classList.remove('is-visible');
+
+    setTimeout(function() {
+      positiveButton.setAttribute('disabled', true);
+      inputField.value = '';
+    }, 0);
+  }
+
+  negativeButton.addEventListener('click', function() {
+    closeUIPrompt();
+  }, false);
+
+  positiveButton.addEventListener('click', function() {
+    item.remove();
+    closeUIPrompt();
+  }, false);
+
+  inputField.addEventListener('keyup', function() {
+    if (inputField.value == item.dataset.name) {
+      positiveButton.removeAttribute('disabled');
+    } else {
+      positiveButton.setAttribute('disabled', true);
+    }
+  }, false);
 
   document.addEventListener('mousedown', function(e) {
     if (e.target.classList.contains(className)) {
@@ -95,8 +131,7 @@
       item.style.transform = '';
 
     } else {
-      UIOverlay.classList.add('is-visible');
-      UIPrompt.classList.add('is-visible');
+      openUIPrompt();
 
       let y = Math.floor((dragStart.x - inventoryRect.left) / (52 * scaleRatio)) + 1;
       let x = Math.floor((dragStart.y - inventoryRect.top) / (52 * scaleRatio)) + 1;
@@ -112,15 +147,6 @@
       document.getElementById('UIPrompt-text').innerHTML = UIPromptTextTemplate
         .replace('[:color:]', item.dataset.color)
         .replace('[:legendary:]', item.dataset.name);
-
-      // var response = prompt('Type "The Juggernaut" to delete');
-      // if (response == 'The Juggernaut') {
-      //   console.log('delete');
-      //   UIOverlay.classList.remove('is-visible');
-      // } else {
-      //   console.log('error');
-      //   UIOverlay.classList.remove('is-visible');
-      // }
     }
   }, false);
 
