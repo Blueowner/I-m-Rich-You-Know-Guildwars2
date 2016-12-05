@@ -105,6 +105,11 @@
   }, false);
 
   document.addEventListener('mouseup', function(e) {
+    if (e.which !== 1) {
+      // Any `which` different than 1 is not a left click.
+      return;
+    }
+
     if ( ! isDragging) {
       return;
     }
