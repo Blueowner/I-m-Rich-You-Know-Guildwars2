@@ -24,15 +24,12 @@
   window.addEventListener('resize', onWindowResize, false);
   onWindowResize();
   function onWindowResize() {
-    let computed = getComputedStyle(document.body);
-    let bodyRect = document.body.getBoundingClientRect();
-
-    let ratioTop = parseInt(computed.height.replace('px', '')) / 1080;
-    let ratioLeft = parseInt(computed.width.replace('px', '')) / 1920;
+    let ratioTop = window.innerHeight / 1080;
+    let ratioLeft = window.innerWidth / 1920;
     scaleRatio = Math.min(ratioTop, ratioLeft);
 
-    inventoryContainer.style.top = `${(bodyRect.height - 1080 * scaleRatio) / 2}px`;
-    inventoryContainer.style.left = `${(bodyRect.width - 1920 * scaleRatio) / 2}px`;
+    inventoryContainer.style.top = `${(window.innerHeight - 1080 * scaleRatio) / 2}px`;
+    inventoryContainer.style.left = `${(window.innerWidth - 1920 * scaleRatio) / 2}px`;
     inventoryContainer.style.transform = `scale(${scaleRatio})`;
 
     inventoryRect = inventory.getBoundingClientRect()
@@ -40,8 +37,8 @@
 
   function repositionItem(element, event) {
     element.style.position = 'absolute';
-    element.style.top = `${(event.pageY - inventoryRect.top) / scaleRatio}px`;
-    element.style.left = `${(event.pageX - inventoryRect.left) / scaleRatio}px`;
+    element.style.top = `${(event.clientY - inventoryRect.top) / scaleRatio}px`;
+    element.style.left = `${(event.clientX - inventoryRect.left) / scaleRatio}px`;
     element.style.transform = `translate(-${25}px, -${25}px)`;
   }
 
@@ -82,9 +79,14 @@
   });
 
   document.addEventListener('mousedown', function(e) {
+    if (e.which !== 1) {
+      // Any `which` different than 1 is not a left click.
+      return;
+    }
+
     if (e.target.classList.contains(className)) {
       isDragging = true;
-      dragStart = { x: e.pageX, y: e.pageY };
+      dragStart = { x: e.clientX, y: e.clientY };
 
       item = e.target;
       itemClone = e.target.cloneNode(true);
@@ -111,11 +113,11 @@
 
     isDragging = false;
 
-    if (event.pageX >= inventoryRect.left && event.pageX <= inventoryRect.right &&
-        event.pageY >= inventoryRect.top && event.pageY <= inventoryRect.bottom) {
+    if (event.clientX >= inventoryRect.left && event.clientX <= inventoryRect.right &&
+        event.clientY >= inventoryRect.top && event.clientY <= inventoryRect.bottom) {
 
-      let y = Math.floor((event.pageX - inventoryRect.left) / (cellSize * scaleRatio)) + 1;
-      let x = Math.floor((event.pageY - inventoryRect.top) / (cellSize * scaleRatio)) + 1;
+      let y = Math.floor((event.clientX - inventoryRect.left) / (cellSize * scaleRatio)) + 1;
+      let x = Math.floor((event.clientY - inventoryRect.top) / (cellSize * scaleRatio)) + 1;
 
       let cell = document.getElementById(`${x}-${y}`);
 
