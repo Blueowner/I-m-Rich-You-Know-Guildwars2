@@ -74,6 +74,18 @@
     }
   }, false);
 
+  document.addEventListener('keyup', function(e) {
+    if (e.which !== 27) {
+      return;
+    }
+
+    closeUIPrompt();
+  }, false);
+
+  document.addEventListener('mousewheel', function(e) {
+    e.preventDefault();
+  }, false);
+
   document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
   });
