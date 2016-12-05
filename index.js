@@ -17,6 +17,7 @@
   var isDragging = false;
   var className = 'js-handle';
   var item = null;
+  var itemClone = null;
   var scaleRatio = 1;
   var cellSize = 57;
 
@@ -26,13 +27,9 @@
     let computed = getComputedStyle(document.body);
     let bodyRect = document.body.getBoundingClientRect();
 
-    // let fullHDTop = 197;
-    // let fullHDLeft = 315;
     let ratioTop = parseInt(computed.height.replace('px', '')) / 1080;
     let ratioLeft = parseInt(computed.width.replace('px', '')) / 1920;
     scaleRatio = Math.min(ratioTop, ratioLeft);
-
-    console.log(ratioTop, ratioLeft);
 
     inventoryContainer.style.top = `${(bodyRect.height - 1080 * scaleRatio) / 2}px`;
     inventoryContainer.style.left = `${(bodyRect.width - 1920 * scaleRatio) / 2}px`;
@@ -41,11 +38,11 @@
     inventoryRect = inventory.getBoundingClientRect()
   }
 
-  function repositionItem(item, event) {
-    item.style.position = 'absolute';
-    item.style.top = `${(event.pageY - inventoryRect.top) / scaleRatio}px`;
-    item.style.left = `${(event.pageX - inventoryRect.left) / scaleRatio}px`;
-    item.style.transform = `translate(-${25}px, -${25}px)`;
+  function repositionItem(element, event) {
+    element.style.position = 'absolute';
+    element.style.top = `${(event.pageY - inventoryRect.top) / scaleRatio}px`;
+    element.style.left = `${(event.pageX - inventoryRect.left) / scaleRatio}px`;
+    element.style.transform = `translate(-${25}px, -${25}px)`;
   }
 
   function openUIPrompt() {
@@ -90,8 +87,10 @@
       dragStart = { x: e.pageX, y: e.pageY };
 
       item = e.target;
+      itemClone = e.target.cloneNode(true);
+      inventory.appendChild(itemClone);
 
-      repositionItem(item, e);
+      repositionItem(itemClone, e);
     }
   }, false);
 
@@ -100,13 +99,15 @@
       return;
     }
 
-    repositionItem(item, e);
+    repositionItem(itemClone, e);
   }, false);
 
   document.addEventListener('mouseup', function(e) {
     if ( ! isDragging) {
       return;
     }
+
+    itemClone.remove();
 
     isDragging = false;
 
@@ -116,13 +117,7 @@
       let y = Math.floor((event.pageX - inventoryRect.left) / (cellSize * scaleRatio)) + 1;
       let x = Math.floor((event.pageY - inventoryRect.top) / (cellSize * scaleRatio)) + 1;
 
-      console.log(x, y);
-
       let cell = document.getElementById(`${x}-${y}`);
-
-      if ( ! cell) {
-        return console.warn('No cell at', { x, y });
-      }
 
       if (cell.firstChild) {
         let _y = Math.floor((dragStart.x - inventoryRect.left) / (cellSize * scaleRatio)) + 1;
@@ -131,8 +126,6 @@
       }
 
       cell.appendChild(item);
-      item.style.position = 'static';
-      item.style.transform = '';
 
     } else {
       openUIPrompt();
@@ -140,9 +133,6 @@
       let y = Math.floor((dragStart.x - inventoryRect.left) / (cellSize * scaleRatio)) + 1;
       let x = Math.floor((dragStart.y - inventoryRect.top) / (cellSize * scaleRatio)) + 1;
       document.getElementById(`${x}-${y}`).appendChild(item);
-
-      item.style.position = 'static';
-      item.style.transform = '';
 
       if ( ! UIPromptTextTemplate) {
         UIPromptTextTemplate = document.getElementById('UIPrompt-text').innerHTML;
